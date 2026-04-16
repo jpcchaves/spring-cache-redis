@@ -18,7 +18,7 @@ public class CreditAnalysisController {
 
     private final CreditAnalysisService creditAnalysisService;
 
-    @GetMapping("/{cpf}'")
+    @GetMapping("/{cpf}")
     public ResponseEntity<CreditAnalysisResponseDTO> getCreditAnalysis(@PathVariable String cpf) {
         log.info("Doing credit analysis for cpf: {}", cpf);
         var response = creditAnalysisService.getCreditAnalysis(cpf);

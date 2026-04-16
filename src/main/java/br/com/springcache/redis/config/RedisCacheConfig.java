@@ -1,6 +1,5 @@
 package br.com.springcache.redis.config;
 
-import br.com.springcache.redis.dto.CreditAnalysisResponseDTO;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -21,15 +20,15 @@ public class RedisCacheConfig {
     }
 
     @Bean
-    public RedisTemplate<String, CreditAnalysisResponseDTO> redisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, CreditAnalysisResponseDTO> template = new RedisTemplate<>();
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
 
-        JacksonJsonRedisSerializer<CreditAnalysisResponseDTO> serializer =
-                new JacksonJsonRedisSerializer<>(CreditAnalysisResponseDTO.class);
+        JacksonJsonRedisSerializer<Object> serializer =
+                new JacksonJsonRedisSerializer<>(Object.class);
 
         template.setValueSerializer(serializer);
         template.setHashValueSerializer(serializer);
