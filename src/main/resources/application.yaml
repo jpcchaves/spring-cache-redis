@@ -8,6 +8,7 @@ spring:
       port: 6379
       username: ${REDIS_USERNAME:}
       password: ${REDIS_PASSWORD:}
+      # Timeout should be around 1-2 seconds to avoid slow throughput time in API response
       timeout: 31s
       connect-timeout: 3s
       # ssl should be true
