@@ -6,6 +6,21 @@ spring:
     redis:
       host: localhost
       port: 6379
+      username: ${REDIS_USERNAME:}
+      password: ${REDIS_PASSWORD:}
+      timeout: 31s
+      connect-timeout: 3s
+      # ssl should be true
+      # its disabled here because it has a SslHandkshake of 10s, which is not enough to test a slow processing
+      ssl:
+        enabled: false
+
+    lettuce:
+      pool:
+        max-active: 20
+        max-idle: 20
+        min-idle: 2
+        max-wait: 2s
 
   cache:
     type: redis
